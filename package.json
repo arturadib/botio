@@ -1,0 +1,16 @@
+{ "name": "botio"
+, "version": "0.0.1pre1"
+, "author": "Artur Adib <aadib@mozilla.com>"
+, "description": "Github build/test bot"
+, "keywords": ["travis", "CI", "test", "regression", "build", "continuous integration"]
+, "repository": "git://github.com/arturadib/botio"
+, "homepage": "http://github.com/arturadib/botio"
+, "bin": "./bin/botio"
+, "dependencies": {
+    "commander": "0.5.2",
+    "express": "2.5.8",
+    "request": "2.9.153",
+    "step": "0.0.5",
+    "shelljs": "0.0.2pre1"
+  }
+}
