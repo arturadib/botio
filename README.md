@@ -59,15 +59,16 @@ You change your bot behavior by changing the various configuration files and scr
 
 #### What's a typical Bot.io workflow?
 
-1. User submits a pull request
-2. Bot detects new PR and fires up the test suite
-3. Bot writes comment back to PR containing test result
-4. Reviewers either merge or ask for revision based on the test result
+1. User submits pull request
+2. Reviewers think the code is desirable, so they fire up the bot by leaving special comment
+3. Bot runs the tests/builds and writes back to PR with results
+
+Reviewers can then either merge or ask for further revision based on bot results.
 
 
 #### I don't want to use Bot.io anymore. How do I uninstall the Github hooks installed by Bot.io?
 
-Go to your Github Account Settings > Service Hooks > Post-Receive URLs and disable the URL corresponding to the IP of your machine.
+On Github, go to Account Settings > Service Hooks > Post-Receive URLs and disable the URL corresponding to the IP of your machine. (Don't forget to save it).
 
 #### How many concurrent tests can I run?
 
@@ -75,4 +76,4 @@ At the moment Bot.io uses a simple queueing system, so only one test can be run 
 
 #### How does the bot handle DoS attacks?
 
-Bot.io has a configurable queueing system with white-listed users. By default, a non-white listed user can only queue up to five tests per day.
+Bot.io only responds to white-listed users.
