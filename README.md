@@ -9,43 +9,49 @@ Bot.io has been battle-tested at Mozilla's [pdf.js](http://github.com/mozilla/pd
 
 ## Getting started
 
+
+### Installing
+
 Bot.io's only dependency is [Node.js](https://github.com/joyent/node). First create a new directory that will contain all configuration files and scripts. In this directory issue:
 
 ```bash
 $ npm install -g botio
-$ botio bootstrap
+$ botio bootstrap --repo user/repo_name --user repo_admin_name --password password123
 ```
 
-Edit the file `botio.json` and modify the `repo` entry to point to the desired Github repo (for example `{"repo": "mozilla/pdf.js"}`). Then set up the necessary Github hooks and start the Bot.io server:
+This will create configuration files/scripts in the current dir, and set up the necessary Github hooks for the `repo` using the given `user` credentials. 
+
+
+### Botting away
+
+You're now ready to start the server. Again from the bot files directory above run:
 
 ```bash
-$ botio hooks --user repo_admin_name --password password123
-$ botio server --user maybe_someone_else --password password123
+$ botio start --user maybe_someone_else --password password123
 ```
 
-Bot.io's server will use the given user account when leaving comments in pull requests. It doesn't need to be the same as the account used for setting up the hooks. To test Bot.io, go to your Github repo and issue a new pull request. The bot should write back a comment in the PR discussion along the lines of:
+Bot.io will use the given `user` account when leaving comments in pull requests, but note that it doesn't need to be the same as the account used for bootstrapping (some like their bot profile picture to look better than their own...). You can then go to your Github repo and trigger the first Bot.io job by leaving the following comment on any issue/pull request:
+
+```
+-botio say hello
+```
+
+The bot should write back a comment in the PR discussion along the lines of:
 
 ```
 Hello world, from Bot.io!
 ```
 
 
+### Configuring
 
-## Customizing
-
-
-
-
-## Command-line reference
-
-+ `botio start`
-+ `botio stop`
-+ `botio log`
+You change your bot behavior by changing the various configuration files and scripts in the bot files dir.
 
 
 
 
-## The bot API
+## Botspeak (the bot mini-language)
+
 
 
 
