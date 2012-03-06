@@ -1,57 +1,31 @@
-# Bot.io: A Github build/test bot
+# Bot.io: Run your own Github build/test bot
 
-Bot.io is a build/test bot for Github projects. It is similar to [Travis-CI](http://travis-ci.org) in purpose, but works at the pull request (PR) level instead of post-commit. It was designed for [workflows](http://scottchacon.com/2011/08/31/github-flow.html) that treat `master` as the production branch, so that tests need to be run prior to merging a PR, not after.
+Bot.io is a build/test bot for Github projects. It is similar to [Travis-CI](https://github.com/travis-ci/travis-ci) in purpose, but it works at the pull request (PR) level instead of post-commit. It was designed for [workflows](http://scottchacon.com/2011/08/31/github-flow.html) that treat `master` as the production branch, so that tests need to be run prior to merging a PR, not after.
 
-Bot.io has been battle-tested at Mozilla's [pdf.js](http://github.com/mozilla/pdf.js) project.
+Bot.io has been battle-tested at Mozilla's [pdf.js](http://github.com/mozilla/pdf.js) project since late 2011.
 
 
 
 
 ## Getting started
 
-
-### Installing
-
-Bot.io's only dependency is [Node.js](https://github.com/joyent/node). First create a new directory that will contain all configuration files and scripts. In this directory issue:
+Bot.io depends on [Node.js](https://github.com/joyent/node) and git. First create a new directory that will contain all configuration files and scripts. In this directory issue:
 
 ```bash
 $ npm install -g botio
 $ botio bootstrap --repo user/repo_name --user repo_admin_name --password password123
-```
-
-This will create default configuration files/scripts in the current dir, and set up the necessary Github hooks for the repo using the given user credentials. 
-
-
-### Botting away
-
-You're now ready to start the server. From the bot files directory above run:
-
-```bash
 $ botio start --user maybe_someone_else --password password123
 ```
 
-Bot.io will use the given user account when leaving comments in pull requests, but note that it doesn't need to be the same as the account used for bootstrapping (some like their bot profile picture to look better than their own...). You can then go to your Github repo and trigger the first Bot.io job by leaving the following comment on any issue/pull request:
+This will bootstrap default configuration files/scripts in the current dir, and set up the necessary Github hooks for the repo using the given user credentials. (Make sure port 8877 is open, otherwise modify `config.json` accordingly).
+
+The server will use the user account given in `botio start` when leaving comments in pull requests. (Note that it doesn't need to be the same as the account used in `botio bootstrap` - you might want to create a dedicated user to impersonate the bot). You can then go to your Github repo and trigger the first Bot.io job by leaving the following comment on any pull request:
 
 ```
 -botio test
 ```
 
-The bot should write back a comment in the PR discussion along the lines of:
-
-```
-Hello @user, Bot.io here.
-
-This is the default test script. It's configured to simply list the files in your repo:
-
-lib/
-src/
-docs/
-README.md
-LICENSE
-package.json
-```
-
-See `on_test.js` in your bot files directory for how this is done. You probably want to modify that script to fire up your own builds/tests.
+The bot should write back a hello world response in the PR discussion. See `on_test.js` in your bot files directory for how this is done. You will want to modify that script to fire up your own builds/tests.
 
 
 
