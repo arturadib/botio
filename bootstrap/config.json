@@ -1,4 +1,9 @@
 {
   "port": 8877,
-  "script_timeout": 3600
+  "script_timeout": 3600,
+  "tmp_dir": "./tmp",
+  "static_dir": "./static",
+  "on": {
+    "test": "node ../../on_test.js"
+  }
 }
