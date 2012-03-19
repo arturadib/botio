@@ -1,6 +1,6 @@
 # Bot.io: Keep pull requests from breaking your master
 
-Bot.io is a build/test bot for Github projects. It is similar to [Travis-CI](https://github.com/travis-ci/travis-ci) in purpose, but most of the action happens at the pull request level.
+Bot.io is a fully flexible build/test bot for Github projects. It is similar to [Travis-CI](https://github.com/travis-ci/travis-ci) in purpose, but most of the action happens at the pull request level. (And you have to run your own test/build servers).
 
 Bot.io has been battle-tested at Mozilla's [pdf.js](http://github.com/mozilla/pdf.js) project since late 2011.
 
@@ -9,16 +9,16 @@ Bot.io has been battle-tested at Mozilla's [pdf.js](http://github.com/mozilla/pd
 
 ## How it works
 
-Reviewers write shell-like scripts such as [on_test.js](https://github.com/arturadib/botio/tree/master/bootstrap). The bot listens for `/botio test` comments in pull requests, and runs the script when the command is detected.
+Reviewers write [shell-like](http://github.com/arturadib/shelljs) scripts such as [on_test.js](https://github.com/arturadib/botio/blob/master/bootstrap/on_test.js). The bot listens for `/botio test` comments in pull requests, and runs the script when the command is detected.
 
-The bot then reports back to the pull request with the result of the tests run by the script. (Other commands are possible, just create a new script like `on_publish.js` and invoke the bot with the command `/botio publish`).
+The bot then reports back to the pull request with the result of the tests run by the script. Other commands are possible. For example, to listen for `/botio publish` simply create a new script `on_publish.js`.
 
 
 
 
 ## Getting started
 
-Bot.io depends on [Node.js](https://github.com/joyent/node) and git. To get started, create a new directory for your Botio files. In this directory, bootstrap Github hooks/configuration files, and start the server:
+Bot.io depends on [Node.js](https://github.com/joyent/node) and `git`. To get started, create a new directory for your Botio files. In this directory, bootstrap Github hooks/configuration files, and start the server:
 
 ```bash
 $ npm install -g botio
