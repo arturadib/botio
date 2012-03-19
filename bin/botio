@@ -13,11 +13,13 @@ program
   .command('bootstrap')
   .description('set up necessary Github hooks, create basic config files in current dir')
   .option('-r, --repo <repo>', 'Github repo to watch, e.g. mozilla/pdf.js')
+  .option('-o, --port <port>', 'port for the Botio server')
   .option('-u, --user <user>', 'user name of Github repo admin')
   .option('-p, --pwd <pwd>', 'password of Github repo admin')
   .option('-f, --force', 'do not prompt before overwriting files')
   .action(function(opts){
     global.repo = opts.repo;
+    global.port = opts.port;
     global.user = opts.user;
     global.pwd = opts.pwd;
     global.force = opts.force;

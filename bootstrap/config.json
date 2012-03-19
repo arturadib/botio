@@ -1,5 +1,4 @@
 {
-  "port": 8877,
   "script_timeout": 3600,
   "private_dir": "./private",
   "public_dir": "./public"
