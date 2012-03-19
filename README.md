@@ -9,7 +9,7 @@ Bot.io has been battle-tested at Mozilla's [pdf.js](http://github.com/mozilla/pd
 
 ## Getting started
 
-Bot.io depends on [Node.js](https://github.com/joyent/node) and git. To get started, create a new directory specific for your Botio files. In this directory, boostrap Github and configuration files, and start the server:
+Bot.io depends on [Node.js](https://github.com/joyent/node) and git. To get started, create a new directory specific for your Botio files. In this directory, bootstrap Github and configuration files, and start the server:
 
 ```bash
 $ npm install -g botio
