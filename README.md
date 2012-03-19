@@ -2,7 +2,7 @@
 
 Bot.io is a fully flexible build/test bot for Github projects. It is similar to [Travis-CI](https://github.com/travis-ci/travis-ci) in purpose, but most of the action happens at the pull request level. (And you have to run your own test/build servers).
 
-Bot.io has been battle-tested at Mozilla's [pdf.js](http://github.com/mozilla/pdf.js) project since late 2011.
+Bot.io works on both Windows and Unix, and has been battle-tested at Mozilla's [pdf.js](http://github.com/mozilla/pdf.js) project since late 2011.
 
 
 
