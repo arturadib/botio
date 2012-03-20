@@ -15,10 +15,11 @@ Bot.io is written in Node.js and works on both Windows and Unix. Its previous in
 
 1. Reviewers write [shell-like](http://github.com/arturadib/shelljs) scripts such as [on_test.js](https://github.com/arturadib/botio/blob/master/bootstrap/on_test.js) that tell the bot what to do when it receives a command. (Any arbitrary command can be defined).
 2. The bot listens for comments like `/botio test` in pull requests (other Github hooks are supported), and runs the corresponding script when a command is detected.
-3. The bot reports back to the pull request with a comment containing the test result.
-4. Reviewers are happy because they know whether the pull request will break their precious master branch.
+3. The bot reports back to the pull request with a comment containing the test result
 
-**Tip:** Bot.io scripts can do anything, not just run tests. For example, if your project is a web app you can define a command like `/botio publish` that deploys select files into a public web server (Bot.io has a built-in one by the way). That way reviewers can take the PR for a spin on their browser before merging it.
+#### Other uses
+
+Bot.io scripts can do anything, not just run tests. For example, if your project is a web app you can define an [on_publish.js](https://github.com/arturadib/botio/blob/master/bootstrap/on_publish.js) script that deploys select files into a public web server (Bot.io has a built-in one by the way). Reviewers can then issue `/botio publish` and take the PR for a spin on their browser before merging it.
 
 
 
@@ -44,14 +45,6 @@ The bot should write back a hello world response in the PR discussion. See `on_t
 
 
 ## FAQ
-
-
-#### What's a typical Bot.io workflow?
-
-1. User submits pull request
-2. Reviewers think the code is desirable, so they fire up the bot by leaving a special comment like `/botio test`
-3. Bot runs the tests/builds and writes back to PR with results
-4. Reviewers can then either merge or ask for further revision based on bot results.
 
 
 #### I don't want to use Bot.io anymore. How do I uninstall the Github hooks installed by Bot.io?
