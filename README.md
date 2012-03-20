@@ -1,22 +1,24 @@
-# Bot.io: Keep pull requests from breaking your master
+# Bot.io: The mighty Github build/test bot
 
 
 _WARNING: This project is under heavy construction._
 
 
-Bot.io is a fully flexible build/test bot for Github projects. It is similar to [Travis-CI](https://github.com/travis-ci/travis-ci) in purpose, but most of the action happens at the pull request level. (And you have to run your own test/build servers).
+Bot.io is a fully scriptable build/test bot for Github projects. It is similar to [Travis-CI](https://github.com/travis-ci/travis-ci) in purpose, but most of the action happens at the pull request level and there are no constraints on what types of tests you can run. (Also you have to provision your own test/build servers).
 
-Bot.io works on both Windows and Unix, and its previous incarnation has been battle-tested at Mozilla's [pdf.js](http://github.com/mozilla/pdf.js) project since late 2011.
+Bot.io is written in Node.js and works on both Windows and Unix. Its previous incarnation has been battle-tested at Mozilla's [pdf.js](http://github.com/mozilla/pdf.js) project since late 2011.
 
 
 
 
 ## How it works
 
-Reviewers write [shell-like](http://github.com/arturadib/shelljs) scripts such as [on_test.js](https://github.com/arturadib/botio/blob/master/bootstrap/on_test.js). The bot listens for `/botio test` comments in pull requests, and runs the script when the command is detected.
+1. Reviewers write [shell-like](http://github.com/arturadib/shelljs) scripts such as [on_test.js](https://github.com/arturadib/botio/blob/master/bootstrap/on_test.js) that tell the bot what to do when it receives a command. (Any arbitrary command can be defined).
+2. The bot listens for comments like `/botio test` in pull requests (other Github hooks are supported), and runs the corresponding script when a command is detected.
+3. The bot reports back to the pull request with a comment containing the test result.
+4. Reviewers are happy because they know whether the pull request will break their precious master branch.
 
-The bot then reports back to the pull request with the result of the tests run by the script. Other commands are possible. For example, to listen for `/botio publish` simply create a new script `on_publish.js`.
-
+**Tip:** Bot.io scripts can do anything, not just run tests. For example, if your project is a web app you can define a command like `/botio publish` that deploys select files into a public web server (Bot.io has a built-in one by the way). That way reviewers can take the PR for a spin on their browser before merging it.
 
 
 
@@ -49,8 +51,7 @@ The bot should write back a hello world response in the PR discussion. See `on_t
 1. User submits pull request
 2. Reviewers think the code is desirable, so they fire up the bot by leaving a special comment like `/botio test`
 3. Bot runs the tests/builds and writes back to PR with results
-
-Reviewers can then either merge or ask for further revision based on bot results.
+4. Reviewers can then either merge or ask for further revision based on bot results.
 
 
 #### I don't want to use Bot.io anymore. How do I uninstall the Github hooks installed by Bot.io?
