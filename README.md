@@ -1,8 +1,12 @@
 # Bot.io: Keep pull requests from breaking your master
 
+
+_WARNING: This project is under heavy construction._
+
+
 Bot.io is a fully flexible build/test bot for Github projects. It is similar to [Travis-CI](https://github.com/travis-ci/travis-ci) in purpose, but most of the action happens at the pull request level. (And you have to run your own test/build servers).
 
-Bot.io works on both Windows and Unix, and has been battle-tested at Mozilla's [pdf.js](http://github.com/mozilla/pdf.js) project since late 2011.
+Bot.io works on both Windows and Unix, and its previous incarnation has been battle-tested at Mozilla's [pdf.js](http://github.com/mozilla/pdf.js) project since late 2011.
 
 
 
