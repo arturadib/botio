@@ -84,7 +84,7 @@ _To be documented_
 
 #### I don't want to use Bot.io anymore. How do I uninstall the Github hooks installed by Bot.io?
 
-On Github, go to Account Settings > Service Hooks > Post-Receive URLs and disable the URL corresponding to the IP of your machine. (Don't forget to save it).
+On your Github repo, go to Admin > Service Hooks > Post-Receive URLs and disable the URL corresponding to the IP of your machine. (Don't forget to save it).
 
 
 #### How many concurrent tests can I run?
