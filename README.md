@@ -1,4 +1,4 @@
-# Bot.io: The mighty Github build/test bot
+# Bot.io: The Github build/test bot
 
 
 _WARNING: This project is under heavy construction._
@@ -32,9 +32,11 @@ Bot.io is written in Node.js and works on both Windows and Unix. Its previous in
 
 
 
+
+
 ## Getting started
 
-Bot.io depends on [Node.js](https://github.com/joyent/node) and `git`. To get started, create a new directory for your Botio files. In this directory, bootstrap Github hooks/configuration files, and start the server (replace `arturadib` and `arturadib/pdf.js` by your corresponding user and repo names):
+Bot.io depends on [Node.js](https://github.com/joyent/node) and `git`. To get started, create a new directory for your Botio files. In this directory, bootstrap Github hooks/configuration files, and start the server (replace `arturadib` and `arturadib/pdf.js` by your corresponding user and repo names, and configure `port` to the desired port number for the Botio server):
 
 ```bash
 $ npm install -g botio
@@ -57,6 +59,10 @@ The bot should write back a hello world response in the PR discussion.
 
 
 
+
+
+
+
 ## Customizing
 
 #### Leaving comments as a different user
@@ -70,6 +76,8 @@ $ botio start --user fancy_pants_bot --pwd password123
 #### config.json
 
 _To be documented_
+
+
 
 
 

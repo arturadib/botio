@@ -11,6 +11,6 @@
     "commander": "0.5.2",
     "express": "2.5.8",
     "request": "2.9.153",
-    "shelljs": "0.0.2"
+    "shelljs": "0.0.4pre1"
   }
 }
