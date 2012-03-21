@@ -65,12 +65,11 @@ If you want the bot to leave comments in your pull requests as a different user 
 
 ```bash
 $ botio start --user fancy_pants_bot --pwd password123
+```
 
 #### config.json
 
 _To be documented_
-
-```
 
 
 
