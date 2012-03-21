@@ -11,4 +11,4 @@ for (file in ls()) {
 botio.message('#### Hello world');
 botio.message('Your Botio installation works! View full output for the list of files in this repo');
 
-botio.cleanUp(); // make sure we don't leave stuff behind in the private dir
+botio.done();

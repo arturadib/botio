@@ -19,8 +19,11 @@ Bot.io is written in Node.js and works on both Windows and Unix. Its previous in
 
 #### Other uses
 
-Bot.io scripts can do anything, not just run tests. For example, if your project is a web app you can define an [on_cmd_publish.js](https://github.com/arturadib/botio/blob/master/bootstrap/on_cmd_publish.js) script that deploys select files into a public web server (Bot.io has a built-in one by the way). Reviewers can then issue `/botio publish` and take the PR for a spin in their browser before merging it.
+Bot.io scripts can do anything shell scripts can do (not just run tests), and other Github hooks are also supported.
 
+For example, if your project is a web app you can define an [on_cmd_publish.js](https://github.com/arturadib/botio/blob/master/bootstrap/on_cmd_publish.js) script that deploys select files into a public web server (Bot.io has a built-in one by the way). Reviewers can then issue `/botio publish` and take the PR for a spin in their browser before merging it.
+
+Other hooks are also available. For example, the script [on_push.js](https://github.com/arturadib/botio/blob/master/bootstrap/on_push.js) is executed every time new commits are pushed to the master branch, etc.
 
 
 ## Getting started
