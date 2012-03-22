@@ -1,4 +1,4 @@
-# Bot.io: The Github build/test bot
+# Bot.io: The pull request build/test bot
 
 
 _WARNING: This project is under heavy construction._
