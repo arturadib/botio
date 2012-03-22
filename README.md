@@ -65,18 +65,28 @@ The bot should write back a hello world response in the PR discussion. At this p
 
 ## Customizing
 
+#### Writing bot shell scripts
+
+Botio installs the [ShellJS](http://github.com/arturadib/shelljs) Node module to enable simple shell scripting. See the [bootstrap files](https://github.com/arturadib/botio/tree/master/bootstrap) for examples of usage.
+
+When Github sends a new notification, Botio automatially fires up the corresponding script. For example, `push` notifications will trigger `on_push.js`, whereas a comment like `/botio publish` (by a whitelisted user) will trigger `on_cmd_publish.js`.
+
 #### Leaving comments as a different user
 
-If you want the bot to leave comments in your pull requests as a different user (here are some [gravatar suggestions](http://www.iconfinder.com/search/?q=robot)), simply start the server with the desired user credentials:
+If you want the bot to leave comments as a different user (here are some [gravatar suggestions](http://www.iconfinder.com/search/?q=robot)), simply start the server with the desired user credentials:
 
 ```bash
 $ botio start --user fancy_pants_bot --pwd password123
 ```
 
-#### config.json
+#### Configuring (config.json)
 
-_To be documented_
+Here are some important properties you might want to modify:
 
++ `whitelist`: Array of Github user names allowed to trigger Botio commands via pull request comments
++ `public_dir`: Path to the base directory where all web-facing files should be stored
++ `private_dir`: Path to the base directory where all tests will be run
++ `script_timeout`: (In seconds) Will kill any script that takes longer than this
 
 
 
