@@ -65,9 +65,9 @@ The bot should write back a hello world response in the PR discussion. At this p
 
 ## Customizing
 
-#### Writing bot shell scripts
+#### Writing JS shell scripts
 
-Botio installs the [ShellJS](http://github.com/arturadib/shelljs) Node module to enable simple shell scripting. See the [bootstrap files](https://github.com/arturadib/botio/tree/master/bootstrap) for examples of usage.
+Botio uses by default the [ShellJS](http://github.com/arturadib/shelljs) module to enable simple shell scripting. See the [bootstrap files](https://github.com/arturadib/botio/tree/master/bootstrap) for examples of usage.
 
 When Github sends a new notification, Botio automatially fires up the corresponding script. For example, `push` notifications will trigger `on_push.js`, whereas a comment like `/botio publish` (by a whitelisted user) will trigger `on_cmd_publish.js`.
 
