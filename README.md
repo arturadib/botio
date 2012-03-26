@@ -40,6 +40,7 @@ Bot.io depends on [Node.js](https://github.com/joyent/node) and `git`. To get st
 
 ```bash
 $ npm install -g botio
+$ mkdir botio-files; cd botio-files
 $ botio bootstrap --repo arturadib/pdf.js --user arturadib --pwd password123 --port 8877
 $ botio start --user arturadib --pwd password123
 ```
