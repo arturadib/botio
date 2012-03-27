@@ -1,5 +1,5 @@
 { "name": "botio"
-, "version": "0.0.1pre5"
+, "version": "0.0.1pre6"
 , "author": "Artur Adib <aadib@mozilla.com>"
 , "description": "Github build/test bot"
 , "keywords": ["bot", "travis", "CI", "test", "regression", "build", "continuous integration"]
