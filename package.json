@@ -25,7 +25,7 @@
     "commander": "0.5.2",
     "express": "2.5.8",
     "request": "2.9.153",
-    "shelljs": "0.0.5pre2"
+    "shelljs": "latest"
   },
   "devDependencies": {},
   "optionalDependencies": {},
