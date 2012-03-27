@@ -84,6 +84,7 @@ $ botio start --user fancy_pants_bot --pwd password123
 
 Here are some important properties you might want to modify:
 
++ `name`: Name of the bot, in case you have multiple ones (e.g. `Bot.io-Windows`, `Bot.io-Linux`, etc)
 + `whitelist`: Array of Github user names allowed to trigger Botio commands via pull request comments
 + `public_dir`: Path to the base directory where all web-facing files should be stored
 + `private_dir`: Path to the base directory where all tests will be run
