@@ -74,7 +74,7 @@ The bot should write back a hello world response in the PR discussion. At this p
 
 When Github sends a new notification, Botio automatically fires up the corresponding script. For example, `push` (post-receive) notifications will trigger `on_push.js`, whereas a PR comment containg a command like `/botio publish` will trigger `on_cmd_publish.js`.
 
-Bot.io uses [ShellJS](http://github.com/arturadib/shelljs) to enable portable shell-like scripting, so your scripts look like traditional Unix shell scripts but work verbatim on different platforms (like Windows). See the [bootstrap files](https://github.com/arturadib/botio/tree/master/bootstrap) for examples of usage.
+Bot.io uses [ShellJS](http://github.com/arturadib/shelljs) to enable portable shell-like scripting, so your scripts look like traditional Unix shell scripts but work verbatim on different platforms (like Windows). See the [bootstrap files](https://github.com/arturadib/botio/tree/master/bootstrap) or the [Bot.io scripts for Mozilla's PDF.js project](http://github.com/mozilla/botio-files-pdfjs) for examples of usage.
 
 When you `require('botio')`, the module will take care of the necessary cloning and merging into a temporary (private) directory, and your script will be executed in that directory. The module also exposes the following job information properties:
 
@@ -96,8 +96,6 @@ as well as the following methods:
 ```javascript
 botio.message(str)    // Instruct the bot to write 'str' in the pull request response
 ```
-
-To see real-world examples of scripts see Mozilla's [botio-files-pdfjs](http://github.com/mozilla/botio-files/pdfjs) repo.
 
 
 #### Leaving comments as a different user
