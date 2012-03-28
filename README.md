@@ -6,7 +6,7 @@ _WARNING: This project is under heavy construction._
 
 Bot.io is a fully scriptable build/test bot for Github projects. It is similar to [Travis-CI](https://github.com/travis-ci/travis-ci) in purpose, but most of the action happens at the pull request level and there are no constraints on what types of tests you can run. (Also you have to provision your own test/build servers).
 
-Bot.io is written in Node.js and works on both Windows and Unix. Its previous incarnation has been battle-tested at Mozilla's [pdf.js](http://github.com/mozilla/pdf.js) project since late 2011.
+Bot.io is written in Node.js and works on both Windows and Unix. It has been battle-tested at Mozilla's [pdf.js](http://github.com/mozilla/pdf.js) project since late 2011.
 
 
 
@@ -40,24 +40,24 @@ Bot.io is written in Node.js and works on both Windows and Unix. Its previous in
 
 ## Getting started
 
-Bot.io depends on [Node.js](https://github.com/joyent/node) and `git`. To get started, create a new directory for your Botio files. In this directory, bootstrap Github hooks/configuration files, and start the server (replace `--user arturadib` and `--repo arturadib/pdf.js` by your corresponding user and repo names, and set `--port` to the desired port number for the Botio server):
+Bot.io depends on [Node.js](https://github.com/joyent/node) and `git`. To get started, create a new dir for your Botio files, bootstrap the necessary files, and fire up the server:
 
-```bash
+```
 $ npm install -g botio
 $ mkdir botio-files; cd botio-files
 $ botio bootstrap --repo arturadib/pdf.js --user arturadib --pwd password123 --port 8877
 $ botio start --user arturadib --pwd password123
 ```
 
-That's it!
+(Of course, replace `--user arturadib` and `--repo arturadib/pdf.js` by your corresponding user and repo names, and set `--port` to the desired port number for the Botio server, _making sure the port is open_).
 
-You can now trigger your first Bot.io job by leaving the following comment on any pull request in your repo:
+That's it! You can now trigger your first Bot.io job by leaving the following comment on any pull request in your repo:
 
 ```
 /botio test
 ```
 
-The bot should write back a hello world response in the PR discussion. At this point you will probably want to customize your bot scripts, like `on_cmd_test.js`.
+The bot should write back a hello world response in the PR discussion. At this point you will probably want to customize your bot scripts, as described below.
 
 
 
@@ -70,15 +70,37 @@ The bot should write back a hello world response in the PR discussion. At this p
 
 ## Customizing
 
-#### Writing JS shell scripts
+#### Writing bot scripts
 
-Botio uses by default the [ShellJS](http://github.com/arturadib/shelljs) module to enable portable shell-like scripting. See the [bootstrap files](https://github.com/arturadib/botio/tree/master/bootstrap) for examples of usage.
+When Github sends a new notification, Botio automatically fires up the corresponding script. For example, `push` notifications will trigger `on_push.js`, whereas a PR comment containg a command like `/botio publish` will trigger `on_cmd_publish.js`.
 
-When Github sends a new notification, Botio automatially fires up the corresponding script. For example, `push` notifications will trigger `on_push.js`, whereas a comment like `/botio publish` (by a whitelisted user) will trigger `on_cmd_publish.js`.
+Bot.io uses [ShellJS](http://github.com/arturadib/shelljs) to enable portable shell-like scripting, so your scripts look like traditional Unix shell scripts but work verbatim on different platforms (like Windows). See the [bootstrap files](https://github.com/arturadib/botio/tree/master/bootstrap) for examples of usage.
+
+When you `require('botio')`, the module will take care of the necessary cloning and merging into a temporary (private) directory, and your script will be executed in that directory. The module also exposes the following job information properties:
+
+```javascript
+botio.event           // Event type (e.g. cmd_test, push, etc)
+botio.issue           // Issue number (if event comes from issue comment or pull request)
+botio.private_dir     // Where tests for the current PR will be run
+botio.public_dir      // Where public files for the current PR should be stored
+botio.public_url      // URL of this PR's public dir
+botio.base_url        // Git URL of the main repo
+botio.head_url        // Git URL of the pull request repo
+botio.head_ref        // Name of pull request branch
+botio.head_sha        // SHA of the most recent commit in the pull request
+botio.debug           // True if the server was invoked with --debug
+```
+
+as well as the following methods:
+
+```javascript
+botio.message(str)    // Instruct the bot to write 'str' in the pull request response
+```
+
 
 #### Leaving comments as a different user
 
-If you want the bot to leave comments as a different user (here are some [gravatar suggestions](http://www.iconfinder.com/search/?q=robot)), simply start the server with the desired user credentials:
+If you want the bot to leave comments as a different Github user (here are some [gravatar suggestions](http://www.iconfinder.com/search/?q=robot)), simply start the server with the desired user credentials:
 
 ```bash
 $ botio start --user fancy_pants_bot --pwd password123
@@ -88,12 +110,13 @@ $ botio start --user fancy_pants_bot --pwd password123
 
 Here are some important properties you might want to modify:
 
-+ `name`: Name of the bot, in case you have multiple ones (e.g. `Bot.io-Windows`, `Bot.io-Linux`, etc)
-+ `whitelist`: Array of Github user names allowed to trigger Botio commands via pull request comments
-+ `public_dir`: Path to the base directory where all web-facing files should be stored
-+ `private_dir`: Path to the base directory where all tests will be run
-+ `script_timeout`: (In seconds) Will kill any script that takes longer than this
-
+```javascript
+name              // Name of the bot, in case you have multiple ones (e.g. `Bot.io-Windows`, `Bot.io-Linux`, etc)
+whitelist         // Array of Github user names allowed to trigger Botio commands via pull request comments
+public_dir        // Path to the base directory where all web-facing files should be stored
+private_dir       // Path to the base directory where all tests will be run
+script_timeout    // (In seconds) Will kill any script that takes longer than this
+```
 
 
 
