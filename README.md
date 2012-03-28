@@ -72,7 +72,7 @@ The bot should write back a hello world response in the PR discussion. At this p
 
 #### Writing bot scripts
 
-When Github sends a new notification, Botio automatically fires up the corresponding script. For example, `push` notifications will trigger `on_push.js`, whereas a PR comment containg a command like `/botio publish` will trigger `on_cmd_publish.js`.
+When Github sends a new notification, Botio automatically fires up the corresponding script. For example, `push` (post-receive) notifications will trigger `on_push.js`, whereas a PR comment containg a command like `/botio publish` will trigger `on_cmd_publish.js`.
 
 Bot.io uses [ShellJS](http://github.com/arturadib/shelljs) to enable portable shell-like scripting, so your scripts look like traditional Unix shell scripts but work verbatim on different platforms (like Windows). See the [bootstrap files](https://github.com/arturadib/botio/tree/master/bootstrap) for examples of usage.
 
@@ -142,3 +142,12 @@ At the moment Bot.io uses a simple queueing system, so only one test can be run 
 #### How does the bot handle security?
 
 Bot.io only responds to white-listed users.
+
+
+#### How do I get a list of available commands/scripts?
+
+In a pull request discussion, issue:
+
+```
+/botio help
+```
