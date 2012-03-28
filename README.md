@@ -17,9 +17,13 @@ Bot.io is written in Node.js and works on both Windows and Unix. Its previous in
 
 #### Pull request testing
 
-1. Reviewers write [shell-like](http://github.com/arturadib/shelljs) scripts such as [on_cmd_test.js](https://github.com/arturadib/botio/blob/master/bootstrap/on_cmd_test.js) that tell the bot what to do when it receives a command. (Any arbitrary command can be defined).
-2. The bot listens for comments like `/botio test` in pull requests, and runs the corresponding script when a command is detected.
-3. The bot reports back to the pull request with a comment containing the test result.
+![Screenshot](https://github.com/arturadib/botio/raw/master/screenshot.png)
+
+1. You write [shell-like](http://github.com/arturadib/shelljs) scripts such as [on_cmd_test.js](https://github.com/arturadib/botio/blob/master/bootstrap/on_cmd_test.js) that tell the bot what to do when it receives a command. (Any arbitrary command can be defined).
+2. Pull request reviewers leave a comment containing a bot command like `/botio test`, causing the bot to run the corresponding script against a hypothetically merged pull request.
+3. The bot reports back to the pull request discussion with a comment containing the test result.
+
+
 
 #### Other uses
 
@@ -68,7 +72,7 @@ The bot should write back a hello world response in the PR discussion. At this p
 
 #### Writing JS shell scripts
 
-Botio uses by default the [ShellJS](http://github.com/arturadib/shelljs) module to enable simple shell scripting. See the [bootstrap files](https://github.com/arturadib/botio/tree/master/bootstrap) for examples of usage.
+Botio uses by default the [ShellJS](http://github.com/arturadib/shelljs) module to enable portable shell-like scripting. See the [bootstrap files](https://github.com/arturadib/botio/tree/master/bootstrap) for examples of usage.
 
 When Github sends a new notification, Botio automatially fires up the corresponding script. For example, `push` notifications will trigger `on_push.js`, whereas a comment like `/botio publish` (by a whitelisted user) will trigger `on_cmd_publish.js`.
 
