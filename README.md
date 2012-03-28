@@ -97,6 +97,8 @@ as well as the following methods:
 botio.message(str)    // Instruct the bot to write 'str' in the pull request response
 ```
 
+To see real-world examples of scripts see Mozilla's [botio-files-pdfjs](http://github.com/mozilla/botio-files/pdfjs) repo.
+
 
 #### Leaving comments as a different user
 
