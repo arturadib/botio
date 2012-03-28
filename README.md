@@ -21,7 +21,7 @@ Bot.io is written in Node.js and works on both Windows and Unix. It has been bat
 
 1. You write [shell-like](http://github.com/arturadib/shelljs) scripts such as [on_cmd_test.js](https://github.com/arturadib/botio/blob/master/bootstrap/on_cmd_test.js) that tell the bot what to do when it receives a command. (Any arbitrary command can be defined).
 2. Pull request reviewers leave a comment containing a bot command like `/botio test`, causing the bot to run the corresponding script against a hypothetically merged pull request.
-3. The bot reports back to the pull request discussion with a comment containing the test result.
+3. The bot reports back to the pull request discussion with a comment containing the test result, so reviewers can anticipate if the PR will break their master branch before merging it.
 
 
 
