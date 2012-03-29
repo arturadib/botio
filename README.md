@@ -137,11 +137,6 @@ use_queue         // Set to true if commands should be run in a queue, i.e. not 
 On your Github repo, go to Admin > Service Hooks > Post-Receive URLs and disable the URL corresponding to the IP of your machine. (Don't forget to save it).
 
 
-#### How many concurrent tests can I run?
-
-At the moment Bot.io uses a simple queueing system, so only one test can be run at a time. This might change in the future.
-
-
 #### How does the bot handle security?
 
 Bot.io only responds to white-listed users.
