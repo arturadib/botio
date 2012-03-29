@@ -79,6 +79,7 @@ Bot.io uses [ShellJS](http://github.com/arturadib/shelljs) to enable portable sh
 When you `require('botio')`, the module will take care of the necessary cloning and merging into a temporary (private) directory, and your script will be executed in that directory. The module also exposes the following job information properties:
 
 ```javascript
+botio.id              // Unique id string of the job
 botio.event           // Event type (e.g. cmd_test, push, etc)
 botio.issue           // Issue number (if event comes from issue comment or pull request)
 botio.private_dir     // Where tests for the current PR will be run
@@ -116,6 +117,8 @@ whitelist         // Array of Github user names allowed to trigger Botio command
 public_dir        // Path to the base directory where all web-facing files should be stored
 private_dir       // Path to the base directory where all tests will be run
 script_timeout    // (In seconds) Will kill any script that takes longer than this
+use_queue         // Set to true if commands should be run in a queue, i.e. not concurrently
+                  // (Useful when commands are too memory/CPU heavy, e.g. browser tests)
 ```
 
 

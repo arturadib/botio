@@ -2,5 +2,6 @@
   "name": "Bot.io (Main)",
   "script_timeout": 3600,
   "private_dir": "./private",
-  "public_dir": "./public"
+  "public_dir": "./public",
+  "use_queue": true
 }
