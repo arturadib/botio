@@ -27,7 +27,7 @@ Bot.io is written in Node.js and works on both Windows and Unix. It has been bat
 
 #### Other uses
 
-+ _Live browser tests:_ Bot.io comes with a built-in web server, so if your project is a web app you can create a script, say [on_cmd_publish.js](https://github.com/arturadib/botio/blob/master/bootstrap/on_cmd_publish.js), to deploy select files into the server. Reviewers can then issue `/botio publish` and take the PR for a spin in their browser before merging it.
++ _Live browser tests:_ Bot.io comes with a built-in web server, so if your project is a web app you can create a script, say [on_cmd_preview.js](https://github.com/arturadib/botio/blob/master/bootstrap/on_cmd_preview.js), to deploy select files into the server. Reviewers can then issue `/botio preview` and take the PR for a spin in their browser before merging it.
 
 + _Post-receive scripts:_ Bot.io scripts can do just about anything shell scripts can do, and they can hook into other Github events. For example, the script [on_push.js](https://github.com/arturadib/botio/blob/master/bootstrap/on_push.js) is executed every time new commits are pushed to the master branch.
 
@@ -72,7 +72,7 @@ The bot should write back a hello world response in the PR discussion. At this p
 
 #### Writing bot scripts
 
-When Github sends a new notification, Botio automatically fires up the corresponding script. For example, `push` (post-receive) notifications will trigger `on_push.js`, whereas a PR comment containg a command like `/botio publish` will trigger `on_cmd_publish.js`.
+When Github sends a new notification, Botio automatically fires up the corresponding script. For example, `push` (post-receive) notifications will trigger `on_push.js`, whereas a PR comment containg a command like `/botio preview` will trigger `on_cmd_preview.js`.
 
 Bot.io uses [ShellJS](http://github.com/arturadib/shelljs) to enable portable shell-like scripting, so your scripts look like traditional Unix shell scripts but work verbatim on different platforms (like Windows). See the [bootstrap files](https://github.com/arturadib/botio/tree/master/bootstrap) or the [Bot.io scripts for Mozilla's PDF.js project](http://github.com/mozilla/botio-files-pdfjs) for examples of usage.
 
