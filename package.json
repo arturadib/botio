@@ -1,6 +1,6 @@
 {
   "name": "botio",
-  "version": "0.0.1pre11",
+  "version": "0.0.1",
   "author": "Artur Adib <aadib@mozilla.com>",
   "description": "Github build/test bot",
   "keywords": [
