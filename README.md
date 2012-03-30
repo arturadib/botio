@@ -6,7 +6,7 @@ _WARNING: This project is under heavy construction._
 
 Bot.io is a fully scriptable build/test bot for Github projects. It is similar to [Travis-CI](https://github.com/travis-ci/travis-ci) in purpose, but most of the action happens at the pull request level and there are no constraints on what types of tests you can run. (Also you have to provision your own test/build servers).
 
-Bot.io is written in Node.js and works on both Windows and Unix. It has been battle-tested at Mozilla's [pdf.js](http://github.com/mozilla/pdf.js) project since late 2011.
+Bot.io is written in Node.js and works on both Windows and Unix. It has been battle-tested at Mozilla's [PDF.js project](http://github.com/mozilla/pdf.js) since late 2011.
 
 
 
@@ -74,9 +74,9 @@ The bot should write back a hello world response in the PR discussion. At this p
 
 When Github sends a new notification, Botio automatically fires up the corresponding script. For example, `push` (post-receive) notifications will trigger `on_push.js`, whereas a PR comment containg a command like `/botio preview` will trigger `on_cmd_preview.js`.
 
-Bot.io uses [ShellJS](http://github.com/arturadib/shelljs) to enable portable shell-like scripting, so your scripts look like traditional Unix shell scripts but work verbatim on different platforms (like Windows). See the [bootstrap files](https://github.com/arturadib/botio/tree/master/bootstrap) or the [Bot.io scripts for Mozilla's PDF.js project](http://github.com/mozilla/botio-files-pdfjs) for examples of usage.
+Bot.io uses [ShellJS](http://github.com/arturadib/shelljs) to enable portable shell-like scripting, so your scripts look like traditional Unix shell scripts but work verbatim on different platforms (like Windows). See [mozilla/botio-files-pdfjs](http://github.com/mozilla/botio-files-pdfjs) for real-world examples.
 
-When you `require('botio')`, the module will take care of the necessary cloning and merging into a temporary (private) directory, and your script will be executed in that directory. The module also exposes the following job information properties:
+When you `require('botio')`, the module takes care of the necessary cloning and merging into a temporary (private) directory, and executes your script in that directory. The module also exposes the following job information properties:
 
 ```javascript
 botio.id              // Unique id string of the job
