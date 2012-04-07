@@ -1,4 +1,4 @@
-var botio = require('botio');
+var botio = require(process.env['BOTIO_MODULE']);
 require('shelljs/global');
 
 // Recursively copy all files into public directory
