@@ -48,7 +48,7 @@ $ mkdir botio-files; cd botio-files
 $ botio bootstrap --repo arturadib/pdf.js
 ```
 
-The bootstrapped file `config.json` contains sensible defaults, but you will likely want to double-check and/or modify it at this point. (In particular, make sure `host`, `port`, and `whitelist` are correct). Then let Bot.io set up the necessary Github hooks, and start the server:
+The bootstrapped file `config.json` contains sensible defaults, but you will likely want to double-check and/or modify it at this point. (In particular, make sure `host`, `port`, and `whitelist` are what you want). Then let Bot.io set up the necessary Github hooks, and start the server:
 
 ```
 $ botio sethooks --user arturadib --pwd password123
@@ -116,6 +116,7 @@ $ botio start --user fancy_pants_bot --pwd password123
 Here are some important properties you might want to modify:
 
 ```javascript
+host              // Host name of server. By default Botio will use its public IP
 name              // Name of the bot, in case you have multiple ones (e.g. `Bot.io-Windows`, `Bot.io-Linux`, etc)
 whitelist         // Array of Github user names allowed to trigger Botio commands via pull request comments
 public_dir        // Path to the base directory where all web-facing files should be stored
