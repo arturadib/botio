@@ -40,7 +40,7 @@ Bot.io is written in Node.js and works on both Windows and Unix. It has been bat
 
 ## Getting started
 
-Bot.io depends on [Node.js](https://github.com/joyent/node) and `git`. To get started, create a new dir for your Botio files and bootstrap the necessary files for your repo:
+Bot.io depends on [Node.js](https://github.com/joyent/node) and `git`. To get started, create a new dir for your Botio files and bootstrap the necessary files for your repo, e.g.:
 
 ```
 $ npm install -g botio
@@ -48,7 +48,7 @@ $ mkdir botio-files; cd botio-files
 $ botio bootstrap --repo arturadib/pdf.js
 ```
 
-The bootstrapped file `config.json` contains sensible defaults, but you will likely want to double-check and/or modify it at this point. (In particular, make sure `host`, `port`, and `whitelist` are what you want). Then let Bot.io set up the necessary Github hooks, and start the server:
+The bootstrapped file `config.json` contains sensible defaults, but you will likely want to double-check and/or modify it at this point. (In particular, make sure `host`, `port`, and `whitelist` are what you want). Then let Bot.io set up the necessary Github hooks, and start the server, e.g.:
 
 ```
 $ botio sethooks --user arturadib --pwd password123
