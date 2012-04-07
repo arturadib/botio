@@ -40,7 +40,7 @@ Bot.io is written in Node.js and works on both Windows and Unix. It has been bat
 
 ## Getting started
 
-Bot.io depends on [Node.js](https://github.com/joyent/node) and `git`. To get started, create a new dir for your Botio files and bootstrap the necessary files for your repo, e.g.:
+Bot.io depends on [Node.js](https://github.com/joyent/node) and `git`. To get started, install Bot.io globally, create a new dir for your Botio files, and bootstrap the necessary files for your repo, e.g.:
 
 ```
 $ npm install -g botio
