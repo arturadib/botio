@@ -3,5 +3,6 @@
   "script_timeout": 3600,
   "private_dir": "./private",
   "public_dir": "./public",
+  "port": 8000,
   "use_queue": true
 }

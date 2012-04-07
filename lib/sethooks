@@ -8,8 +8,8 @@ var request = require('request'),
 
 shell.silent();
 
-if (!global.repo) {
-  console.log('Missing command line parameter. See --help.');
+if (!global.repo || !global.user || !global.pwd || !global.port) {
+  console.log('Please specify repo, user credentials, and port number. See --help.');
   console.log();
   process.exit(1);
 }
@@ -20,8 +20,7 @@ if (!shell.which('git')) {
   process.exit(1);
 }
 
-// Get params from globals
-config.repo = global.repo;
+var githubHooksUrl = 'https://'+global.user+':'+global.pwd+'@api.github.com/repos/'+global.repo+'/hooks';
 
 // Copy bootstrap/ files into current dir
 bootstrap.copyFiles = function() {
@@ -57,8 +56,8 @@ bootstrap.copyFiles = function() {
     }
     console.log('OK');
 
-    config = common.extend(config, JSON.parse(shell.cat('./config.json')));
-    
+    config = JSON.parse(shell.cat('./config.json'));
+
     // Next step
     bootstrap.getIp();
   }; // copyFiles()
@@ -75,22 +74,20 @@ bootstrap.getIp = function() {
     }
     console.log(config.host = ip);
 
-    bootstrap.getWhitelist();
+    bootstrap.checkHooks();
   });
 };
 
-// Get list of repo collaborators
-bootstrap.getWhitelist = function() {
-  var url = 'https://api.github.com/repos/'+config.repo+'/collaborators';
-
-  process.stdout.write('Getting list of repo collaborators (whitelist)... ');
-  request.get(url, function(err, res, body) {
+// Make sure hooks are not already set
+bootstrap.checkHooks = function() {
+  process.stdout.write('Getting existing Github hooks... ');
+  request.get(githubHooksUrl, function(err, res, body) {
     if (err || res.statusCode !== 200) {
       console.log('FAILED');
       console.log();
 
       if (res && res.statusCode === 404)
-        console.log('Repo does not exist (404) or repo access forbidden.');
+        console.log('Repo does not exist or repo access forbidden. You need admin privileges to setup Botio.');
 
       if (res && res.statusCode === 401)
         console.log('Bad Github credentials');
@@ -99,21 +96,67 @@ bootstrap.getWhitelist = function() {
     }
 
     console.log('OK');
-    config.whitelist = [];
+    bootstrap.saveConfig();
 
+    // Check if hooks already exist
     body = JSON.parse(body);
-    body.forEach(function(user) {
-      config.whitelist.push(user.login);
+    body.forEach(function(hook) {
+      if (hook.active && 
+          hook.name === 'web' &&
+          hook.config && hook.config.url && hook.config.url.indexOf(config.host) > -1) {
+        console.log();
+        console.log('Hooks already set up for this IP');
+        process.exit(0);
+      }
     });
 
-    bootstrap.saveConfig();
+    // If here, we need new hooks
+    bootstrap.setupHooks();
   });
 };
 
 // Save config to file
 bootstrap.saveConfig = function() {
+  config.repo = global.repo;
+  config.port = global.port;
+  config.whitelist = [global.user];
   JSON.stringify(config, null, 2).to('config.json');
-  process.exit(0);
+}
+
+// Set up hooks
+bootstrap.setupHooks = function() {
+  var payload = {
+    name: 'web',
+    active: true,
+    events: [
+      'push',
+      'pull_request',
+      'issue_comment'
+    ],
+    config: { 
+      url: 'http://'+config.host+':'+global.port,
+      content_type: 'json'
+    }
+  };
+
+  process.stdout.write('Setting up new hooks... ');
+  request.post({url:githubHooksUrl, json:payload}, function(err, res, body) {
+    if (err || res.statusCode !== 201) {
+      console.log('FAILED');
+      console.log();
+
+      if (res && res.statusCode === 404)
+        console.log('Repo does not exist or repo access forbidden');
+
+      if (res && res.statusCode === 401)
+        console.log('Bad Github credentials');
+
+      process.exit(1);
+    }
+
+    console.log('OK');
+    process.exit(0);
+  }); // request.post
 }
 
 bootstrap.copyFiles();
