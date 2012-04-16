@@ -80,7 +80,7 @@ When Github sends a new notification, Botio automatically fires up the correspon
 
 Bot.io uses [ShellJS](http://github.com/arturadib/shelljs) to enable portable shell-like scripting, so your scripts look like traditional Unix shell scripts but work verbatim on different platforms (like Windows). See [mozilla/botio-files-pdfjs](http://github.com/mozilla/botio-files-pdfjs) for real-world examples.
 
-When you `require('botio')`, the module takes care of the necessary cloning and merging into a temporary (private) directory, and executes your script in that directory. The module also exposes the following job information properties:
+When you `require()` the main Botio module, it automatically takes care of the necessary cloning and merging into a temporary (private) directory, and executes your script in that directory. The module also exposes the following job information properties:
 
 ```javascript
 botio.id              // Unique id string of the job
