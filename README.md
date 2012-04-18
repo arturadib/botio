@@ -118,6 +118,7 @@ Here are some important properties you might want to modify:
 ```javascript
 host              // Host name of server. By default Botio will use its public IP
 name              // Name of the bot, in case you have multiple ones (e.g. `Bot.io-Windows`, `Bot.io-Linux`, etc)
+handles           // Array of handles the bot responds to via `/handle command` (e.g. `['botio', 'botio-linux']`)
 whitelist         // Array of Github user names allowed to trigger Botio commands via pull request comments
 public_dir        // Path to the base directory where all web-facing files should be stored
 private_dir       // Path to the base directory where all tests will be run
