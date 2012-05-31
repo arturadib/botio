@@ -48,7 +48,7 @@ $ mkdir botio-files; cd botio-files
 $ botio bootstrap --repo arturadib/pdf.js
 ```
 
-(Replace `arturadib` and `pdf.js` by your Github username and repo, respectively).
+(Replace `arturadib` and `pdf.js` with your Github username and repo, respectively).
 
 The bootstrapped file `config.json` contains sensible defaults, but you will likely want to double-check and/or modify it at this point. (In particular, make sure `host`, `port`, and `whitelist` are what you want). Then let Bot.io set up the necessary Github hooks, and start the server, e.g.:
 
@@ -57,7 +57,7 @@ $ botio sethooks --user arturadib --pwd password123
 $ botio start --user arturadib --pwd password123
 ```
 
-(The password needs to match your Github user password).
+(Replace `password123` with your Github user password).
 
 That's it! You can now trigger your first Bot.io job by leaving the following comment on any pull request in your repo:
 
