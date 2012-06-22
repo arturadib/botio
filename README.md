@@ -1,12 +1,9 @@
 # Bot.io: The pull request build/test bot
 
 
-_WARNING: This project is under heavy construction._
-
-
 Bot.io is a fully scriptable build/test bot for Github projects. It is similar to [Travis-CI](https://github.com/travis-ci/travis-ci) in purpose, but most of the action happens at the pull request level and there are no constraints on what types of tests you can run. (Also you have to provision your own test/build servers).
 
-Bot.io is written in Node.js and works on both Windows and Unix. It has been battle-tested at Mozilla's [PDF.js project](http://github.com/mozilla/pdf.js) since late 2011.
+Bot.io is written in Node.js and works on both Windows and Unix. It is used in several Mozilla projects, including [PDF.js](http://github.com/mozilla/pdf.js), [Boot-to-Gecko](https://github.com/mozilla-b2g/gaia), [Popcorn.js](https://github.com/mozilla/popcorn-js), and [Butter.js](https://github.com/mozilla/butter).
 
 
 
