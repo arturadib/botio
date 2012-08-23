@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/arturadib/botio.png)](http://travis-ci.org/arturadib/botio)
 # Bot.io: The pull request build/test bot
 
 
